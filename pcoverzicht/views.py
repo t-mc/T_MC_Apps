@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, FormView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 
 from pcoverzicht.models import Computer, Software
-
+from pcoverzicht.forms import ComputerForm
 # Create your views here.
 
 
@@ -54,3 +54,20 @@ class SoftwareUpdate(UpdateView):
 class SoftwareDelete(DeleteView):
     model = Software
     success_url = reverse_lazy('software_list')
+
+
+class ComputerForm(FormView):
+    template_name = 'pcoverzicht/computer_form2.html'
+    form_class = ComputerForm
+    succes_url = reverse_lazy('computer_list')
+
+    def get_object(self, queryset=None):
+        obj = Computer.objects.get(naam='SP4-2016-006')
+        print(obj)
+        return obj
+
+    # def form_valid(self, form):
+    #     obj = form.save()
+    #     return HttpsResponseDirect('computerlist')
+
+

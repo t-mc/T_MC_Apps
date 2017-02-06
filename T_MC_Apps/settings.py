@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'T_MC_Apps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tmc-support',
+        'NAME': 'T-MC',
         'USER': 'mydatabaseuser',
         'PASSWORD': 'Hard24Get',
         'HOST': '127.0.0.1',

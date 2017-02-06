@@ -54,7 +54,7 @@ class Cases(models.Model):
     status = models.ForeignKey(CaseStatus, null=True)
     klant = models.CharField(max_length=64, null=True)
     contactpersoon = models.CharField(max_length=64, blank=True, null=True)
-    uitvoerende = models.ForeignKey(User, null=True)
+    uitvoerende = models.CharField(max_length=64, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Cases'
@@ -89,7 +89,7 @@ class Activiteiten(models.Model):
     activiteit = models.ForeignKey(ActivityType)
     status = models.ForeignKey(ActivityStatus)
     omschrijving = models.TextField()
-    uitvoerende = models.ForeignKey(User, default=User)
+    uitvoerende = models.CharField(max_length=64, blank=True, null=True)
     datumUitgevoerd = models.DateField(("Datum"), default=date.today)
 
     class Meta:
@@ -97,6 +97,7 @@ class Activiteiten(models.Model):
 
     # def __str__(self):
     #     return self.activiteit
+
 
 #
 # Functie voor het genereren van alfanumerieke case code

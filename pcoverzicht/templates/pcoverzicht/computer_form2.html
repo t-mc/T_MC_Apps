@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+{% load crispy_forms_tags %}
+
+{% block title %}Computer toevoegen 2{% endblock %}
+
+{% block bodyblock %}
+
+        <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Nieuwe PC toevoegen</h3>
+        </div>
+        <div style="padding: 10pt">
+<!--             <form action="" method="POST" class="form"> -->
+              {% csrf_token %}
+{#              {{ form|crispy }}#}
+            {% crispy form %}
+{#              {% buttons %}#}
+                <!-- <button type="submit" class="btn btn-custom" value="Sla op">Opslaan</button>
+                <a href="/pcoverzicht/computer/list" class="btn btn-custom">Annuleren</a> -->
+{#              {% endbuttons %}#}
+            <!-- </form> -->
+        </div>
+    </div>
+
+{% endblock %}

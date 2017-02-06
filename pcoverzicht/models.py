@@ -29,8 +29,8 @@ class Software(models.Model):
     class Meta:
         verbose_name_plural = "Software"
 
-    # def __str__(self):
-    #     return self.pk
+    def __str__(self):
+        return "%s - %s %s" % (self.naam, self.software, self.versienummer)
 
     def get_absolute_url(self):
         return reverse('software_edit', kwargs={'pk': self.pk})

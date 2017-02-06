@@ -1,5 +1,6 @@
 
 from django.forms import formset_factory
+from django.shortcuts import render
 
 from django.views.generic import DetailView, FormView, ListView
 
@@ -28,40 +29,47 @@ class CasesListView(ListView):
 #     return render(request, 'support/index.html', {'formset': CasesListFormSet(), 'cases_list': cases_list})
 
 
-def activity_add(request):
-    # context = RequestContext(request)
-    if request.method == 'POST':
-        form = ActivityForm(request.POST)
+# def activity_add(request):
+#     # context = RequestContext(request)
+#     if request.method == 'POST':
+#         form = ActivityForm(request.POST)
+#
+#         if form.is_valid():
+#             form.save(commit=True)
+#
+#             return add_activity(request)
+#         else:
+#             print(form.errors)
+#
+#     else:
+#         form = ActivityForm(initial={"uitvoerende": request.user})
+#
+#     return render(request, 'support/activity_add.html', {'form': form})
 
-        if form.is_valid():
-            form.save(commit=True)
 
-            return add_activity(request)
-        else:
-            print(form.errors)
-
-    else:
-        form = ActivityForm(initial={"uitvoerende": request.user})
-
-    return render(request, 'support/activity_add.html', {'form': form})
+class AddActivity(FormView):
+    model = Activiteiten
+    form_class = ActivityForm
+    success_url = 'support/'
 
 
-def case_add(request):
-    # context = RequestContext(request)
-    if request.method == 'POST':
-        form = CaseForm(request.POST)
 
-        if form.is_valid():
-            form.save(commit=True)
-
-            return index(request)
-        else:
-            print(form.errors)
-
-    else:
-        form = CaseForm(initial={"uitvoerende": request.user})
-
-    return render(request, 'support/case_add.html', {'form': form})
+# def case_add(request):
+#     # context = RequestContext(request)
+#     if request.method == 'POST':
+#         form = CaseForm(request.POST)
+#
+#         if form.is_valid():
+#             form.save(commit=True)
+#
+#             return index(request)
+#         else:
+#             print(form.errors)
+#
+#     else:
+#         form = CaseForm(initial={"uitvoerende": request.user})
+#
+#     return render(request, 'support/case_add.html', {'form': form})
 
 # def case_detail(request, case_id):
 #     # context = RequestContext(request)

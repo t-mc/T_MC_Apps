@@ -18,7 +18,8 @@
               {% bootstrap_form form %}
               {% buttons %}
                 <button type="submit" class="btn btn-custom" value="Sla wijziging op">Opslaan</button>
-                 <a href="/pcoverzicht/computer/delete/{{ object.pk }}" class="btn btn-custom">Verwijderen</a>
+                <a href="/pcoverzicht/computer/delete/{{ object.pk }}" class="btn btn-custom">Verwijderen</a>
+                <a href="/pcoverzicht/computer/list" class="btn btn-custom">Annuleren</a>
               {% endbuttons %}
             </form>
         </div>
